@@ -10,7 +10,7 @@ $album = new Album();
 $pdf->SetFont('Arial', 'B', 16);
 $pdf->Text(30, 10, 'Reporte de Albumes');
 $pdf->SetFont('Arial', '', 12);
-$pdf->Text(30, 20, 'Listado completo de álbumes disponibles en la base de datos');
+$pdf->Text(30, 20, 'Listado completo de albumes disponibles en la base de datos');
 
 // Pie de página
 $pdf->SetFont('Arial', '', 12);
@@ -26,7 +26,7 @@ $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(10, 10, "#", 1);
 $pdf->Cell(50, 10, "Titulo", 1);
 $pdf->Cell(40, 10, "Genero", 1);
-$pdf->Cell(30, 10, "Año", 1);
+$pdf->Cell(30, 10, "Anio", 1);
 $pdf->Cell(60, 10, "Discografica", 1);
 $pdf->Ln();
 
@@ -37,7 +37,7 @@ while ($alb = mysqli_fetch_assoc($listaAlbumes)) {
     $pdf->Cell(10, 10, $index, 1);
     $pdf->Cell(50, 10, $alb["titulo"], 1);
     $pdf->Cell(40, 10, $alb["genero"], 1);
-    $pdf->Cell(30, 10, $alb["año_lanzamiento"], 1);
+    $pdf->Cell(30, 10, $alb["anio_lanzamiento"], 1);
     $pdf->Cell(60, 10, $alb["discografica"], 1);
     $pdf->Ln();
     $index++;
