@@ -1,0 +1,56 @@
+<div class="card my-5">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-end mb-4">
+        <h3 class="mb-0">
+          {{ titulo }}
+          <!--Interpolación para mostrar el título enviado desde el .ts-->
+        </h3>
+      </div>
+      <form [formGroup]="frm_Album" (ngSubmit)="grabar()">
+        <div class="row">
+          <!-- Título del álbum -->
+          <div class="form-group mb-3">
+            <label class="form-label" for="titulo">Título</label>
+            <input formControlName="titulo" type="text" class="form-control" id="titulo" placeholder="Ingrese el título del álbum" />
+            <div *ngIf="frm_Album.get('titulo').invalid && frm_Album.get('titulo').touched">
+              <small *ngIf="frm_Album.get('titulo').hasError('required')" style="color: red">El título es requerido</small>
+            </div>
+          </div>
+  
+          <!-- Género del álbum -->
+          <div class="form-group mb-3">
+            <label class="form-label" for="genero">Género</label>
+            <input formControlName="genero" type="text" class="form-control" id="genero" placeholder="Ingrese el género del álbum" />
+            <div *ngIf="frm_Album.get('genero').invalid && frm_Album.get('genero').touched">
+              <small *ngIf="frm_Album.get('genero').hasError('required')" style="color: red">El género es requerido</small>
+            </div>
+          </div>
+  
+          <!-- Año de lanzamiento del álbum -->
+          <div class="form-group mb-3">
+            <label class="form-label" for="anio_lanzamiento">Año de lanzamiento</label>
+            <input type="number" formControlName="anio_lanzamiento" class="form-control" id="anio_lanzamiento" placeholder="Ingrese el año de lanzamiento" />
+            <div *ngIf="frm_Album.get('anio_lanzamiento').invalid && frm_Album.get('anio_lanzamiento').touched">
+              <small *ngIf="frm_Album.get('anio_lanzamiento').hasError('required')" style="color: red">El año de lanzamiento es requerido</small>
+              <small *ngIf="frm_Album.get('anio_lanzamiento').hasError('min')" style="color: red">El año no puede ser menor a 1900</small>
+            </div>
+          </div>
+  
+          <!-- Discográfica -->
+          <div class="form-group mb-3">
+            <label class="form-label" for="discografica">Discográfica</label>
+            <input type="text" class="form-control" formControlName="discografica" id="discografica" placeholder="Ingrese la discográfica" />
+            <div *ngIf="frm_Album.get('discografica').invalid && frm_Album.get('discografica').touched">
+              <small *ngIf="frm_Album.get('discografica').hasError('required')" style="color: red">La discográfica es requerida</small>
+            </div>
+          </div>
+  
+          <!-- Botón para enviar el formulario -->
+          <div class="d-grid mt-3">
+            <button type="submit" class="btn btn-primary" [disabled]="frm_Album.invalid">Grabar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
